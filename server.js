@@ -1,6 +1,5 @@
 "use strict";
 const Hapi = require("hapi");
-const Q = require('q');
 const Boom = require('boom');
 
 var server = new Hapi.Server();
@@ -9,14 +8,13 @@ server.connection({ port: process.env.PORT || 3000 });
 //Troublesome plugin
 const troublesomePlugin = (server, options, next) => {
   server.ext('onPreHandler', (request, reply) => {
-    Q.delay(100)
-      .then(() => reply.continue())
-      .catch(err => {
-        console.log("Yeah, we've got Trouble!", err);
-        //Because we've already called reply.continue, this doesn't work.
-        // Hapi code base ./lib/reply.js L74
-        reply(Boom.badImplementation("Explicit handling doesn't fix the issue.", err));
-      });
+    try {
+      //Do something that benefits from a try catch. JSON parsing for example.
+      reply.continue();
+    } catch (err) {
+      //Again, manually handling problem doesn't help.
+      reply(Boom.badImplementation("Explicit handling doesn't fix the issue.", err));
+    }
   });
   next();
 };
