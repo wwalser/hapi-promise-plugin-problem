@@ -1,0 +1,24 @@
+{
+  "name": "hapi-promise-plugin-problem",
+  "version": "1.0.0",
+  "description": "Reproducing Hapi auth plugin trouble with promises",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwalser/hapi-promise-plugin-problem.git"
+  },
+  "author": "Wesley Walser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wwalser/hapi-promise-plugin-problem/issues"
+  },
+  "homepage": "https://github.com/wwalser/hapi-promise-plugin-problem#readme",
+  "dependencies": {
+    "boom": "^3.2.1",
+    "hapi": "^13.4.1",
+    "q": "^1.4.1"
+  }
+}
